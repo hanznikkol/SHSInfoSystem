@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SHSInfoSystem</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="years">
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="strands">
+        <item>STEM</item>
+        <item>ABM</item>
+        <item>HUMMS</item>
+        <item>GAS</item>
+        <item>ICT</item>
+    </string-array>
+</resources>
