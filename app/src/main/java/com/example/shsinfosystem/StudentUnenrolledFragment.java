@@ -1,23 +1,22 @@
 package com.example.shsinfosystem;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import java.util.List;
-import java.util.Random;
-
-public class MainActivity2 extends AppCompatActivity {
+public class StudentUnenrolledFragment extends Fragment {
 
     EditText edFirstName, edMiddleInitial, edLastName, edMobileNum, edAge, edAddress;
     EditText edYearLevel, edStrand;
@@ -26,24 +25,33 @@ public class MainActivity2 extends AppCompatActivity {
     int studentId;
     DBHelper dbHelper;
     StudentItem studentInfo;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.enroll);
-        dbHelper = new DBHelper(this);
 
-        Bundle intent = getIntent().getExtras();
-        studentId = intent.getInt("student_id",-1);
-        edFirstName = (EditText) findViewById(R.id.edFirstName);
-        edMiddleInitial =(EditText) findViewById(R.id.edMiddleInitial);
-        edLastName =(EditText) findViewById(R.id.edLastName);
-        edYearLevel = (EditText) findViewById(R.id.edYearLevel);
-        edStrand= (EditText) findViewById(R.id.edStrand);
-        edMobileNum = (EditText)findViewById(R.id.edMobileNum);
-        edAge =(EditText)findViewById(R.id.edAge);
-        edAddress = (EditText)findViewById(R.id.edAddress);
-        enrollBtn = (Button) findViewById(R.id.enrollBtn);
-        genderRadio = (RadioGroup) findViewById(R.id.edGender);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.enroll, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        dbHelper = new DBHelper(getActivity());
+
+        Bundle bundle = getArguments();
+        if(bundle != null)
+         studentId = bundle.getInt("student_id",-1);
+
+        edFirstName = (EditText) getView().findViewById(R.id.edFirstName);
+        edMiddleInitial =(EditText) getView().findViewById(R.id.edMiddleInitial);
+        edLastName =(EditText) getView().findViewById(R.id.edLastName);
+        edYearLevel = (EditText) getView().findViewById(R.id.edYearLevel);
+        edStrand= (EditText) getView().findViewById(R.id.edStrand);
+        edMobileNum = (EditText)getView().findViewById(R.id.edMobileNum);
+        edAge =(EditText)getView().findViewById(R.id.edAge);
+        edAddress = (EditText)getView().findViewById(R.id.edAddress);
+        enrollBtn = (Button) getView().findViewById(R.id.enrollBtn);
+        genderRadio = (RadioGroup) getView().findViewById(R.id.edGender);
         studentInfo = dbHelper.getStudentInfo(studentId);
 
         edFirstName.setText(studentInfo.firstName);
@@ -71,7 +79,7 @@ public class MainActivity2 extends AppCompatActivity {
                 boolean enroll = dbHelper.enrollStudent(studentId, accnum, password);
 
                 if(enroll){
-                    new AlertDialog.Builder(MainActivity2.this)
+                    new AlertDialog.Builder(getActivity())
                             .setTitle("Enrollment")
                             .setMessage("Account Number: "+accnum + "\nPassword: "  + password)
 
@@ -79,7 +87,7 @@ public class MainActivity2 extends AppCompatActivity {
                             // The dialog is automatically dismissed when a dialog button is clicked.
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    finish();
+                                    getActivity().onBackPressed();
                                 }
                             })
 
@@ -91,6 +99,12 @@ public class MainActivity2 extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
 
     }
 

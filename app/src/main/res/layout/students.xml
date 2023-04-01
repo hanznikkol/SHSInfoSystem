@@ -1,91 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    >
-
-    <LinearLayout
+    android:id="@+id/full_fragment_layout">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
 
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/bg_primary_left"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Students"
-                android:textSize="50sp"
-                android:layout_marginStart="50dp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/montserrat_semi"
-                />
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="80dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Strand"
-                    android:layout_marginStart="30dp"
-                    android:textSize="40sp"
-                    android:textColor="@color/white"
-                    />
-
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="40dp">
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/bg_primary_left"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="40sp"
-                    android:layout_marginStart="30dp"
+                    android:text="Students"
+                    android:textSize="50sp"
+                    android:layout_marginStart="50dp"
                     android:textColor="@color/white"
-                    android:text="Section"/>
+                    android:fontFamily="@font/montserrat_semi"
+                    />
 
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="80dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Strand"
+                        android:layout_marginStart="30dp"
+                        android:textSize="40sp"
+                        android:textColor="@color/white"
+                        />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="40dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="40sp"
+                        android:layout_marginStart="30dp"
+                        android:textColor="@color/white"
+                        android:text="Section"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"/>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/studentView"
 
+                />
         </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/unenrolledBtn"
+            android:backgroundTint="@color/green_primary"
+            android:layout_marginEnd="20dp"/>
+    </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/studentView"
-
-            />
-    </LinearLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="40dp"
-        android:id="@+id/unenrolledBtn"
-        android:backgroundTint="@color/green_primary"
-        android:layout_marginEnd="20dp"/>
-</RelativeLayout>
+</FrameLayout>

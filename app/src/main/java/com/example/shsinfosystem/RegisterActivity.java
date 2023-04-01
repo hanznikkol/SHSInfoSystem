@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerBtn = (Button) findViewById(R.id.registerBtn);
         genderRadio = (RadioGroup) findViewById(R.id.edGender);
 
-
+        gender = "Male";
         String[] years = getResources().getStringArray(R.array.years);
         String[] strands = getResources().getStringArray(R.array.strands);
 

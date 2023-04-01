@@ -14,15 +14,6 @@
         android:theme="@style/Theme.SHSInfoSystem"
         tools:targetApi="31">
         <activity
-            android:name=".StudentInfoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".UnenrolledActivity"
-            android:exported="false" />
-        <activity
             android:name=".StudentViewActivity"
             android:exported="false" />
         <activity
